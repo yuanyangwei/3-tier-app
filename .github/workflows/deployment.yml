@@ -13,3 +13,9 @@ jobs:
           echo "Build ready" > status.txt
           ls -la                  # ◄ Prints the contents of deploy-workspace
           cat status.txt
+
+      - name: Save Workspace for Yuanyang
+        uses: actions/upload-artifact@v4    # ◄ GitHub's built-in file saving engine
+        with:
+          name: my-zipped-workspace          # ◄ The name of your download package
+          path: deploy-workspace/
