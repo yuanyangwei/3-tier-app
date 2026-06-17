@@ -11,3 +11,5 @@ jobs:
           mkdir deploy-workspace
           cd deploy-workspace
           echo "Build ready" > status.txt
+          ls -la                  # ◄ Prints the contents of deploy-workspace
+          cat status.txt
