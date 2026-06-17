@@ -1,0 +1,13 @@
+name: "Practice configure file"
+
+on : push
+
+jobs:
+  directory-inspector:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create directory
+        run: |
+          mkdir deploy-workspace
+          cd deploy-workspace
+          echo "Build ready" > status.txt
