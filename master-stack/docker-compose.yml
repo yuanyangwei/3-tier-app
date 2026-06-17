@@ -1,0 +1,29 @@
+services:
+  # Tier 1: Frontend User Interface (Nginx)
+  frontend:
+    build: ../my-frontend
+    image: my-app/frontend:1.0
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  # Tier 2: Backend Business Logic (Python Flask API)
+  backend:
+    build: ../my-backend
+    image: my-app/backend:1.0
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://database:27017/prod_db
+    depends_on:
+      - database
+
+  # Tier 3: Data Storage (MongoDB)
+  database:
+    image: mongo:6.0
+    volumes:
+      - production_data:/data/db
+
+volumes:
+  production_data:

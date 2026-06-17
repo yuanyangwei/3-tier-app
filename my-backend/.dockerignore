@@ -1,0 +1,10 @@
+# Ignore python compilation leftovers and virtual spaces
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.venv
+venv
+env
+.git
+.github

@@ -1,0 +1,7 @@
+# Ignore local packages and builds - let the container generate fresh ones!
+node_modules
+dist
+build
+.git
+.github
+README.md

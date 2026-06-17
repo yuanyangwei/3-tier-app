@@ -1,0 +1,30 @@
+# --- OS Metadata ---
+.DS_Store
+Thumbs.db
+
+# --- Environment & Secret Management ---
+.env
+.env.local
+*.pem
+*.key
+
+# --- Python Backend Trash ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# --- Frontend Dependencies & Build Outputs ---
+node_modules/
+/my-frontend/dist/
+/my-frontend/build/
+.eslintcache
+.npm/
+
+# --- Local Docker Development Data ---
+# This ensures your local Mongo database files stay safely on your hard drive!
+.docker-data/
