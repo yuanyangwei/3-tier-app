@@ -1,19 +1,17 @@
 name: "Test to run workflow manually"
 
-run-name: Deploy to ${{ github.ref_name }} by @${{ github.actor }}
-
 on:
   workflow_dispatch:
     inputs:
       instance_size:
-        description: "Enter AWS Instance Size"
+        description: "Enter AWS instance size"
         default: "t3.micro"
-        type: string                       # ◄ Always define the data type for clarity!
+        type: string
 
 jobs:
-  provision-infrastructure:                # 1. First, name your job group
-    runs-on: ubuntu-latest                 # 2. Tell GitHub WHERE to run it
+  provision-infrastructure:
+    runs_on: ubuntu-latest
     
-    steps:                                 # 3. Now, list your steps underneath
+    steps:
       - name: "Echo AWS instance size"
-        run: echo "Provisioning an AWS instance of size: ${{ inputs.instance_size }}"
+        run: echo "Provisioning AWS instance of size: ${{ inputs.instance_size}}"
