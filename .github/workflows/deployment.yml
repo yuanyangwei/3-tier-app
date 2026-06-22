@@ -10,7 +10,7 @@ on:
 
 jobs:
   provision-infrastructure:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     
     steps:
       - name: "Echo AWS instance size"
