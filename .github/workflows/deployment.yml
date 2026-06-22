@@ -1,9 +1,12 @@
-name: "Test to run workflow manually"
+name: "Test to run workflow manually v11"
 
 on:
   workflow_dispatch:
     inputs:
       instance_size:
+        description: "Enter AWS credential"
+        default: "t3.micro"
+        type: string
     
 jobs:
   provision-infrastructure:
