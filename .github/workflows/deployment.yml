@@ -1,21 +1,19 @@
-name: "Practice configure file"
+name: "Test to run workflow manually"
 
-on : push
 run-name: Deploy to ${{ github.ref_name }} by @${{ github.actor }}
-jobs:
-  directory-inspector:
-    runs-on: ubuntu-latest
-    steps:
-      - name: create directory
-        run: |
-          mkdir deploy-workspace
-          cd deploy-workspace
-          echo "Build ready" > status.txt
-          ls -la                  # ◄ Prints the contents of deploy-workspace
-          cat status.txt
 
-      - name: Save Workspace for Yuanyang
-        uses: actions/upload-artifact@v4    # ◄ GitHub's built-in file saving engine
-        with:
-          name: my-zipped-workspace          # ◄ The name of your download package
-          path: deploy-workspace/
+on:
+  workflow_dispatch:
+    inputs:
+      instance_size:
+        description: "Enter AWS Instance Size"
+        default: "t3.micro"
+        type: string                       # ◄ Always define the data type for clarity!
+
+jobs:
+  provision-infrastructure:                # 1. First, name your job group
+    runs-on: ubuntu-latest                 # 2. Tell GitHub WHERE to run it
+    
+    steps:                                 # 3. Now, list your steps underneath
+      - name: "Echo AWS instance size"
+        run: echo "Provisioning an AWS instance of size: ${{ inputs.instance_size }}"
