@@ -1,4 +1,3 @@
-cat << 'EOF' > .github/workflows/deployment.yml
 name: "Test to run workflow manually"
 
 on:
@@ -16,4 +15,4 @@ jobs:
     steps:
       - name: "Echo AWS instance size"
         run: echo "Provisioning AWS instance of size: ${{ inputs.instance_size }}"
-EOF
+
