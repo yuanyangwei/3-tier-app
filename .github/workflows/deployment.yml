@@ -1,4 +1,5 @@
-name: "Test to run workflow manually v14"
+name: "Test to run workflow manually"
+run-name: "Execution build v15"
 
 on:
   workflow_dispatch:
