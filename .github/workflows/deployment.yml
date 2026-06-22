@@ -1,7 +1,7 @@
 name: "Practice configure file"
 
 on : push
-
+run-name: Deploy to ${{ github.ref_name }} by @${{ github.actor }}
 jobs:
   directory-inspector:
     runs-on: ubuntu-latest
