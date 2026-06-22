@@ -2,6 +2,8 @@ name: "Test to run workflow manually"
 
 on:
   workflow_dispatch:
+    inputs:
+      instance_size:
     
 jobs:
   provision-infrastructure:
