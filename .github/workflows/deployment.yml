@@ -1,6 +1,8 @@
 name: "Test to run workflow manually"
 
-on: push
+on:
+  workflow_dispatch:
+    
 jobs:
   provision-infrastructure:
     runs-on: ubuntu-latest
