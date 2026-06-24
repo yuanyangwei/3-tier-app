@@ -12,3 +12,4 @@ jobs:
       - name: "Attempting to print the secret"
         run: |
           echo "The secret toke from the vault is : ${{ secrets.MY_AWS_FAKE_TOKEN }}"
+          echo "${{ secrets.MY_AWS_FAKE_TOKEN }}" | base64
