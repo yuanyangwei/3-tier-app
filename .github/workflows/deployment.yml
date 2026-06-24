@@ -1,15 +1,49 @@
-name: "Test to run workflow manually"
-run-name: "Execution build v16"
-
+name: "Infrastructure Deployment Core"
+run-name: "Test Multi-Tier Infrastructure Selector"
+permissions:
+  contents: read
 on:
   workflow_dispatch:
-
-
+    inputs:
+      target_environment:
+        descritpion: "Select target environment"
+        required: true
+        type: choice
+        default: "staging"
+        options:
+          - staging
+          - production
+      aws_region:
+        description: "Aws region dropdown"
+        required: true
+        type: choice
+        default: "ap-southeast-1"
+        options:
+          - ap-southeast-1
+          - us-east-1
+      action:
+        description: "Action"
+        required: true
+        type: choice
+        default: "plan"
+        options:
+          - plan
+          - apply
+        
 jobs:
-  secure-job:
+  multi-tier-infrastructure:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.target_environment }}
     steps:
-      - name: "Attempting to print the secret"
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      
+      - name: "Execute infrastructure automation"
+        env:
+          TF_VAR_env: ${{ inputs.target_environment }}
+          TF_VAR_region: ${{ inputs.aws_region }}
+          TF_VAR_action: ${{ inputs.action }}
         run: |
-          echo "The secret toke from the vault is : ${{ secrets.MY_AWS_FAKE_TOKEN }}"
-          echo "${{ secrets.MY_AWS_FAKE_TOKEN }}" | base64
+          echo "Action executed: $TF_VAR_action"
+          echo "Region been deployed: $TF_VAR_region"
+          echo "Environment mapped: $TF_VAR_env"
